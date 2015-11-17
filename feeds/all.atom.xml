@@ -1,5 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>ckclark's Blog</title><link href="https://ckclark.github.io/" rel="alternate"></link><link href="https://ckclark.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ckclark.github.io/</id><updated>2015-11-17T13:17:06+08:00</updated><entry><title>Switch to pelican</title><link href="https://ckclark.github.io/blog/2015/11/17/switch-to-pelican/" rel="alternate"></link><updated>2015-11-17T13:17:06+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2015-11-17:blog/2015/11/17/switch-to-pelican/</id><summary type="html">&lt;p&gt;&lt;a href="http://docs.getpelican.com/en/3.6.3/"&gt;pelican&lt;/a&gt;&lt;br /&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>ckclark's Blog</title><link href="https://ckclark.github.io/" rel="alternate"></link><link href="https://ckclark.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ckclark.github.io/</id><updated>2015-11-17T18:55:55+08:00</updated><entry><title>[Encrypted] encrypted post test</title><link href="https://ckclark.github.io/blog/2015/11/17/encrypted-post-test/" rel="alternate"></link><updated>2015-11-17T18:55:55+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2015-11-17:blog/2015/11/17/encrypted-post-test/</id><summary type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;JLGvh3PvRaqMVvOn7lkT2A==;C32BX8r7gMOh8+NhXK5trNoV9qzLz9tLkQhONbeiCD1kwMVLWPZEfxZRw5gBeNY+jxmzXjEy4F9fyPPw8sHDoasuRcXfts87leI1pvZjPEMpCjRnBiuEcxNoEzsbOwlTM+TzOSnCGerpo2lYJyn+dgG1wBtm7/5MjtcrKfbFbU3mPScz0gE0+YRQw5BsNLywvDBtVn4BnB/ZwY2q621MCw==;^&lt;/div&gt;
+&lt;div id="pec-decrypted-content"&gt;
+    &lt;h4&gt;&lt;i&gt;The content is encrypted, please enter password&lt;/i&gt;&lt;/h4&gt;
+&lt;/div&gt;
+
+&lt;form id="pec-decrypt-form"&gt;
+    &lt;label for="pec-content-password"&gt;Password&lt;/label&gt;
+    &lt;input type="password" id="pec-content-password" placeholder="Password" /&gt;
+    &lt;button type="button" id="pec-decrypt-content"&gt;Decrypt&lt;/button&gt;
+&lt;/form&gt;
+
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/cipher-core.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/pad-nopadding.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/md5.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/aes.js"&gt;&lt;/script&gt;
+
+
+&lt;script type="text/javascript"&gt;
+    (function () {
+        var strip_padding = function (padded_content, padding_char) {
+            /*
+             * Strips the padding character from decrypted content.
+             */
+            for (var i = padded_content.length; i &gt; 0; i--) {
+                if (padded_content[i-1] !== padding_char) {
+                    return padded_content.slice(0, i);
+                }
+            }
+        };
+
+        var decrypt_content = function (password, iv_b64, ciphertext_b64, padding_char) {
+            /*
+             * Decrypts the content from the ciphertext bundle.
+             */
+            var key = CryptoJS.MD5(password),
+                iv = CryptoJS.enc.Base64.parse(iv_b64),
+                ciphertext = CryptoJS.enc.Base64.parse(ciphertext_b64),
+                bundle = {
+                    key: key,
+                    iv: iv,
+                    ciphertext: ciphertext
+                };
+
+            var plaintext = CryptoJS.AES.decrypt(bundle, key, {iv: iv, padding: CryptoJS.pad.NoPadding});
+
+            try {
+                return strip_padding(plaintext.toString(CryptoJS.enc.Utf8), padding_char);
+            }
+            catch (err) {
+                // encoding failed; wrong password
+                return false;
+            }
+        };
+
+        var init_decryptor = function() {
+            var decrypt_btn = document.getElementById('pec-decrypt-content'),
+                password_input = document.getElementById('pec-content-password'),
+                encrypted_content = document.getElementById('pec-encrypted-content'),
+                decrypted_content = document.getElementById('pec-decrypted-content'),
+                decrypt_form = document.getElementById('pec-decrypt-form');
+
+            decrypt_btn.addEventListener('click', function () {
+                // grab the ciphertext bundle
+                var parts = encrypted_content.innerHTML.split(';');
+
+                // decrypt it
+                var content = decrypt_content(
+                    password_input.value,
+                    parts[0],
+                    parts[1],
+                    parts[2]
+                );
+
+                if (content) {
+                    // success; display the decrypted content
+                    decrypted_content.innerHTML = content;
+                    decrypt_form.parentNode.removeChild(decrypt_form);
+                    encrypted_content.parentNode.removeChild(encrypted_content);
+
+                    // any post processing on the decrypted content should be done here
+                }
+                else {
+                    // ¯\_(ツ)_/¯
+                    password_input.value = '';
+                }
+            });
+        };
+
+        document.addEventListener('DOMContentLoaded', init_decryptor);
+    })();
+&lt;/script&gt;</summary><category term="pelican-plugin"></category><category term="pelican"></category><category term="web"></category></entry><entry><title>Switch to pelican</title><link href="https://ckclark.github.io/blog/2015/11/17/switch-to-pelican/" rel="alternate"></link><updated>2015-11-17T13:17:06+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2015-11-17:blog/2015/11/17/switch-to-pelican/</id><summary type="html">&lt;p&gt;&lt;a href="http://docs.getpelican.com/en/3.6.3/"&gt;pelican&lt;/a&gt;&lt;br /&gt;
 就如同蠻多blogger說的 身為一個pythonist當然就要用python做的static site generator&lt;br /&gt;
 所以就換成pelican了&lt;/p&gt;
 &lt;p&gt;一開始的確不是很順利 quickstart 跑起來缺東缺西&lt;br /&gt;
