@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>ckclark's Blog</title><link href="https://ckclark.github.io/" rel="alternate"></link><link href="https://ckclark.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ckclark.github.io/</id><updated>2015-11-19T20:45:53+08:00</updated><entry><title>Find git difftool fix using git bisect</title><link href="https://ckclark.github.io/blog/2015/11/19/find-git-difftool-fix-using-git-bisect/" rel="alternate"></link><updated>2015-11-19T20:45:53+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2015-11-19:blog/2015/11/19/find-git-difftool-fix-using-git-bisect/</id><summary type="html">&lt;p&gt;用了 git 一陣子 覺得&lt;code&gt;diff.tool&lt;/code&gt;設成&lt;code&gt;vimdiff&lt;/code&gt;後有點麻煩 每次都是Read-only的狀態&lt;br /&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>ckclark's Blog</title><link href="https://ckclark.github.io/" rel="alternate"></link><link href="https://ckclark.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ckclark.github.io/</id><updated>2015-12-10T18:37:03+08:00</updated><entry><title>--reset-author flag in git commit</title><link href="https://ckclark.github.io/blog/2015/12/10/-reset-author-flag-in-git-commit/" rel="alternate"></link><updated>2015-12-10T18:37:03+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2015-12-10:blog/2015/12/10/-reset-author-flag-in-git-commit/</id><summary type="html">&lt;p&gt;當使用&lt;code&gt;git commit -c/--reedit-message&lt;/code&gt;或&lt;code&gt;git commit -C/--reuse-message&lt;/code&gt;的場合&lt;br /&gt;
+有時候只是想拿上個 commit message 當 template 來用(like &lt;code&gt;git commit -c HEAD&lt;/code&gt;)&lt;br /&gt;
+不過最近發現 author date 也會沿用這個指定的commit的&lt;br /&gt;
+查了一下在&lt;a href="https://git-scm.com/docs/git-commit"&gt;manual&lt;/a&gt;裡面有提到  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;-C &amp;lt;commit&amp;gt;
+--reuse-message=&amp;lt;commit&amp;gt;&lt;br /&gt;
+Take an existing commit object, and reuse the log message and the authorship information (&lt;strong&gt;including the timestamp&lt;/strong&gt;) when creating the commit.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;解決方法就是加上&lt;code&gt;--reset-author&lt;/code&gt;就搞定了&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;--reset-author&lt;br /&gt;
+When used with -C/-c/--amend options, or when committing after a a conflicting cherry-pick,
+declare that the authorship of the resulting commit now belongs to the committer.
+This also renews the author timestamp.&lt;/p&gt;
+&lt;/blockquote&gt;</summary><category term="git"></category></entry><entry><title>Find git difftool fix using git bisect</title><link href="https://ckclark.github.io/blog/2015/11/19/find-git-difftool-fix-using-git-bisect/" rel="alternate"></link><updated>2015-11-19T20:45:53+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2015-11-19:blog/2015/11/19/find-git-difftool-fix-using-git-bisect/</id><summary type="html">&lt;p&gt;用了 git 一陣子 覺得&lt;code&gt;diff.tool&lt;/code&gt;設成&lt;code&gt;vimdiff&lt;/code&gt;後有點麻煩 每次都是Read-only的狀態&lt;br /&gt;
 發現網路上有一個 &lt;a href="http://stackoverflow.com/a/25252804"&gt;設定&lt;/a&gt;  其實就是去改 git 實作 
 &lt;code&gt;diff.tool=vimdiff&lt;/code&gt; 的 &lt;a href="https://github.com/git/git/blob/8d530c4d64ffcc853889f7b385f554d53db375ed/mergetools/vimdiff#L2"&gt;command&lt;/a&gt; 而已&lt;br /&gt;
 奇怪的是 照著做後 有一台電腦可以 另一台電腦卻不行&lt;br /&gt;
@@ -282,7 +297,7 @@ Date:   Tue Sep &lt;span class="m"&gt;25&lt;/span&gt; 00:48:11 &lt;span class="m
 
 &lt;p&gt;&lt;a href="https://github.com/git/git/commit/a427ef7acc9d932d1c203dd2fae67f51c4b1d1e8"&gt;See patch detail&lt;/a&gt;&lt;br /&gt;
 順便還可以找到這個之前google不到的 &lt;a href="http://stackoverflow.com/questions/7435002/mergetool-from-gitconfig-being-ignored"&gt;SO討論串&lt;/a&gt;  &lt;/p&gt;
-&lt;p&gt;打完收工&lt;/p&gt;</summary><category term="git"></category></entry><entry><title>[Encrypted] encrypted post test</title><link href="https://ckclark.github.io/blog/2015/11/17/encrypted-post-test/" rel="alternate"></link><updated>2015-11-17T18:55:55+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2015-11-17:blog/2015/11/17/encrypted-post-test/</id><summary type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;2LH1g/jXMY7Oe2bnsGrazg==;lTKD0gKcZx5SDKUbIhbb21rZJJOSjQkP7zFRuXIgpzO0eASkV6LVQL8Ypri5v1rVXbuVTfbmSwq9XQwS972oNz1E7VxxHshR3BpbxetjZr4RaWTXedXLF/lyLIGKTzW6yjPGE47ChpqSNYEBkGD+v+d0Z7aV1Xqoek5msMUAC3KZJIwN5ofnZNvJ43TuJ6IUpyuyaZD6cWSbvp4hWXBz0g==;^&lt;/div&gt;
+&lt;p&gt;打完收工&lt;/p&gt;</summary><category term="git"></category></entry><entry><title>[Encrypted] encrypted post test</title><link href="https://ckclark.github.io/blog/2015/11/17/encrypted-post-test/" rel="alternate"></link><updated>2015-11-17T18:55:55+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2015-11-17:blog/2015/11/17/encrypted-post-test/</id><summary type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;T4zmyw1mXABO89Kp9m2mhA==;uiGbKWQwbx7GhhH1nt/b99d4JIhwWyEeaNOqpLEh2rka9YLHWcfkl+tt8ufdJ79va5rVADnE03f6316GNZQt/M0PnovW9M7vOPERssA2PbCrTNzodJOGEnZrGDaJmAurx9pWaP76qzHE9s3xsQ0xpJ84PomHaYP0/nTK7S47JTHvw/S57ALXZrdBmSWQaAVcF3I1Wvh3gnqYO7n6U8ROUQ==;^&lt;/div&gt;
 &lt;div id="pec-decrypted-content"&gt;
     &lt;h4&gt;&lt;i&gt;The content is encrypted, please enter password&lt;/i&gt;&lt;/h4&gt;
 &lt;/div&gt;
