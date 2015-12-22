@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>ckclark's Blog</title><link href="https://ckclark.github.io/" rel="alternate"></link><link href="https://ckclark.github.io/feeds/programming.atom.xml" rel="self"></link><id>https://ckclark.github.io/</id><updated>2015-12-22T15:12:58+08:00</updated><entry><title>itertools.product will cause MemoryError</title><link href="https://ckclark.github.io/blog/2015/12/22/itertools-product-will-cause-memoryerror/" rel="alternate"></link><updated>2015-12-22T15:12:58+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2015-12-22:blog/2015/12/22/itertools-product-will-cause-memoryerror/</id><summary type="html">&lt;h2&gt;使用&lt;a href="https://docs.python.org/2/library/itertools.html#itertools.product"&gt;itertools.product&lt;/a&gt;的時候請小心&lt;code&gt;MemoryError&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;雖然當其中一個或全部參數都是無窮數列的時候理論上也是能跑出結果&lt;br /&gt;
+不過&lt;code&gt;itertools.product&lt;/code&gt;的行為會需要重跑其中的iterable (不一定所有傳進來的iterable都是能夠重跑的 也不見得重跑會有一樣結果)&lt;br /&gt;
+所以實作上就會試著先把傳進來的iterable都變成&lt;code&gt;tuple&lt;/code&gt;暫存起來&lt;br /&gt;
+那當其中一個是無窮數列的時候 就爆炸囉&lt;br /&gt;
+順帶一提 我的情況是需要建出&lt;code&gt;(0, 1, 2, 3, ...) x 'ABCD' =&amp;gt; (0A, 0B, 0C, 0D, 1A, 1C, ...)&lt;/code&gt; 直到第n個item&lt;br /&gt;
+原本想法是用  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;letter&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;zip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;product&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;itertools&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;ABCD&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="nb"&gt;xrange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;letter&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;結果就當掉 連滑鼠都沒反應 只好hard reset GG&lt;br /&gt;
+解法大概就把&lt;code&gt;itertools.count()&lt;/code&gt;改成&lt;code&gt;xrange(n / 4 + 1)&lt;/code&gt;之類囉  &lt;/p&gt;
+&lt;p&gt;ref1: &lt;a href="http://stackoverflow.com/questions/8695422/why-do-i-get-a-memoryerror-with-itertools-product"&gt;[SO]Why do I get a MemoryError with itertools.product?&lt;/a&gt;&lt;br /&gt;
+ref2: &lt;a href="https://hg.python.org/cpython/file/v2.7.6/Modules/itertoolsmodule.c#l1854"&gt;python source: itertoolsmodule.c#l1854&lt;/a&gt;&lt;/p&gt;</summary><category term="python"></category><category term="itertools"></category></entry></feed>
