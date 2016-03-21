@@ -54,6 +54,35 @@
   		<article>
 <header>
       <h1 class="entry-title">
+        <a href="https://ckclark.github.io/blog/2016/03/21/use-another-location-of-ssh-key-while-using-git/">Use another location of ssh key while using git</a>
+      </h1>
+    <p class="meta">
+<time datetime="2016-03-21T14:57:22+08:00" pubdate>Mon, 21 Mar 2016</time>    </p>
+</header>
+
+  <div class="entry-content"><p>當需要暫時(或一直)用別的ssh key來連線時 可以用<code>GIT_SSH</code>這個env var來完成<br />
+使用方式如下  </p>
+<p>在<code>/path/to/your_script/my_ssh.sh</code>裡面寫</p>
+<div class="highlight"><pre><span class="c">#!/bin/bash</span>
+ssh -i /path/to/your/private/key/id_rsa <span class="nv">$1</span> <span class="nv">$2</span>
+</pre></div>
+
+
+<p>然後再視情況設定<code>GIT_SSH</code>這個env var</p>
+<div class="highlight"><pre><span class="c"># 一次性的</span>
+<span class="nv">GIT_SSH</span><span class="o">=</span>/path/to/your_script/my_ssh.sh git pull
+
+<span class="c"># 同個session下</span>
+<span class="nb">export </span><span class="nv">GIT_SSH</span><span class="o">=</span>/path/to/your_script/my_ssh.sh
+
+<span class="c"># 每次開啟bash ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="https://ckclark.github.io/blog/2016/03/21/use-another-location-of-ssh-key-while-using-git/">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
         <a href="https://ckclark.github.io/blog/2016/03/14/crontab-jobs-are-executed-sequentially/">crontab jobs are executed sequentially</a>
       </h1>
     <p class="meta">
@@ -203,6 +232,9 @@ config看完全部manual才搞定<br />
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
+          <a href="https://ckclark.github.io/blog/2016/03/21/use-another-location-of-ssh-key-while-using-git/">Use another location of ssh key while using git</a>
+      </li>
+      <li class="post">
           <a href="https://ckclark.github.io/blog/2016/03/14/crontab-jobs-are-executed-sequentially/">crontab jobs are executed sequentially</a>
       </li>
       <li class="post">
@@ -213,9 +245,6 @@ config看完全部manual才搞定<br />
       </li>
       <li class="post">
           <a href="https://ckclark.github.io/blog/2015/11/19/find-git-difftool-fix-using-git-bisect/">Find git difftool fix using git bisect</a>
-      </li>
-      <li class="post">
-          <a href="https://ckclark.github.io/blog/2015/11/17/encrypted-post-test/">[Encrypted] encrypted post test</a>
       </li>
     </ul>
   </section>

@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>ckclark's Blog</title><link href="https://ckclark.github.io/" rel="alternate"></link><link href="https://ckclark.github.io/feeds/tools.atom.xml" rel="self"></link><id>https://ckclark.github.io/</id><updated>2016-03-14T12:20:54+08:00</updated><entry><title>crontab jobs are executed sequentially</title><link href="https://ckclark.github.io/blog/2016/03/14/crontab-jobs-are-executed-sequentially/" rel="alternate"></link><updated>2016-03-14T12:20:54+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2016-03-14:blog/2016/03/14/crontab-jobs-are-executed-sequentially/</id><summary type="html">&lt;p&gt;原來crontab的job是依序執行的 想要平行執行請加&amp;amp;在後面&lt;/p&gt;</summary><category term="linux"></category><category term="crontab"></category></entry><entry><title>--reset-author flag in git commit</title><link href="https://ckclark.github.io/blog/2015/12/10/-reset-author-flag-in-git-commit/" rel="alternate"></link><updated>2015-12-10T18:37:03+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2015-12-10:blog/2015/12/10/-reset-author-flag-in-git-commit/</id><summary type="html">&lt;p&gt;當使用&lt;code&gt;git commit -c/--reedit-message&lt;/code&gt;或&lt;code&gt;git commit -C/--reuse-message&lt;/code&gt;的場合&lt;br /&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>ckclark's Blog</title><link href="https://ckclark.github.io/" rel="alternate"></link><link href="https://ckclark.github.io/feeds/tools.atom.xml" rel="self"></link><id>https://ckclark.github.io/</id><updated>2016-03-21T14:57:22+08:00</updated><entry><title>Use another location of ssh key while using git</title><link href="https://ckclark.github.io/blog/2016/03/21/use-another-location-of-ssh-key-while-using-git/" rel="alternate"></link><updated>2016-03-21T14:57:22+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2016-03-21:blog/2016/03/21/use-another-location-of-ssh-key-while-using-git/</id><summary type="html">&lt;p&gt;當需要暫時(或一直)用別的ssh key來連線時 可以用&lt;code&gt;GIT_SSH&lt;/code&gt;這個env var來完成&lt;br /&gt;
+使用方式如下  &lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;/path/to/your_script/my_ssh.sh&lt;/code&gt;裡面寫&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/bin/bash&lt;/span&gt;
+ssh -i /path/to/your/private/key/id_rsa &lt;span class="nv"&gt;$1&lt;/span&gt; &lt;span class="nv"&gt;$2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然後再視情況設定&lt;code&gt;GIT_SSH&lt;/code&gt;這個env var&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# 一次性的&lt;/span&gt;
+&lt;span class="nv"&gt;GIT_SSH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/path/to/your_script/my_ssh.sh git pull
+
+&lt;span class="c"&gt;# 同個session下&lt;/span&gt;
+&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;GIT_SSH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/path/to/your_script/my_ssh.sh
+
+&lt;span class="c"&gt;# 每次開啟bash&lt;/span&gt;
+&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;GIT_SSH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/path/to/your_script/my_ssh.sh &lt;span class="c"&gt;# append in .bashrc&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;參考資料: &lt;a href="http://stackoverflow.com/a/9321723"&gt;Specify private SSH-key to use when executing shell command with or without Ruby?&lt;/a&gt; 裡面還有其他approach&lt;/p&gt;</summary><category term="git"></category></entry><entry><title>crontab jobs are executed sequentially</title><link href="https://ckclark.github.io/blog/2016/03/14/crontab-jobs-are-executed-sequentially/" rel="alternate"></link><updated>2016-03-14T12:20:54+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2016-03-14:blog/2016/03/14/crontab-jobs-are-executed-sequentially/</id><summary type="html">&lt;p&gt;原來crontab的job是依序執行的 想要平行執行請加&amp;amp;在後面&lt;/p&gt;</summary><category term="linux"></category><category term="crontab"></category></entry><entry><title>--reset-author flag in git commit</title><link href="https://ckclark.github.io/blog/2015/12/10/-reset-author-flag-in-git-commit/" rel="alternate"></link><updated>2015-12-10T18:37:03+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2015-12-10:blog/2015/12/10/-reset-author-flag-in-git-commit/</id><summary type="html">&lt;p&gt;當使用&lt;code&gt;git commit -c/--reedit-message&lt;/code&gt;或&lt;code&gt;git commit -C/--reuse-message&lt;/code&gt;的場合&lt;br /&gt;
 有時候只是想拿上個 commit message 當 template 來用(like &lt;code&gt;git commit -c HEAD&lt;/code&gt;)&lt;br /&gt;
 不過最近發現 author date 也會沿用這個指定的commit的&lt;br /&gt;
 查了一下在&lt;a href="https://git-scm.com/docs/git-commit"&gt;manual&lt;/a&gt;裡面有提到  &lt;/p&gt;

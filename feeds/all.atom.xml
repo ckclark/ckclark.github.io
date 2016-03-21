@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>ckclark's Blog</title><link href="https://ckclark.github.io/" rel="alternate"></link><link href="https://ckclark.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ckclark.github.io/</id><updated>2016-03-14T12:20:54+08:00</updated><entry><title>crontab jobs are executed sequentially</title><link href="https://ckclark.github.io/blog/2016/03/14/crontab-jobs-are-executed-sequentially/" rel="alternate"></link><updated>2016-03-14T12:20:54+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2016-03-14:blog/2016/03/14/crontab-jobs-are-executed-sequentially/</id><summary type="html">&lt;p&gt;原來crontab的job是依序執行的 想要平行執行請加&amp;amp;在後面&lt;/p&gt;</summary><category term="linux"></category><category term="crontab"></category></entry><entry><title>itertools.product will cause MemoryError</title><link href="https://ckclark.github.io/blog/2015/12/22/itertools-product-will-cause-memoryerror/" rel="alternate"></link><updated>2015-12-22T15:12:58+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2015-12-22:blog/2015/12/22/itertools-product-will-cause-memoryerror/</id><summary type="html">&lt;h2&gt;使用&lt;a href="https://docs.python.org/2/library/itertools.html#itertools.product"&gt;itertools.product&lt;/a&gt;的時候請小心&lt;code&gt;MemoryError&lt;/code&gt;&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>ckclark's Blog</title><link href="https://ckclark.github.io/" rel="alternate"></link><link href="https://ckclark.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ckclark.github.io/</id><updated>2016-03-21T14:57:22+08:00</updated><entry><title>Use another location of ssh key while using git</title><link href="https://ckclark.github.io/blog/2016/03/21/use-another-location-of-ssh-key-while-using-git/" rel="alternate"></link><updated>2016-03-21T14:57:22+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2016-03-21:blog/2016/03/21/use-another-location-of-ssh-key-while-using-git/</id><summary type="html">&lt;p&gt;當需要暫時(或一直)用別的ssh key來連線時 可以用&lt;code&gt;GIT_SSH&lt;/code&gt;這個env var來完成&lt;br /&gt;
+使用方式如下  &lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;/path/to/your_script/my_ssh.sh&lt;/code&gt;裡面寫&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/bin/bash&lt;/span&gt;
+ssh -i /path/to/your/private/key/id_rsa &lt;span class="nv"&gt;$1&lt;/span&gt; &lt;span class="nv"&gt;$2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然後再視情況設定&lt;code&gt;GIT_SSH&lt;/code&gt;這個env var&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# 一次性的&lt;/span&gt;
+&lt;span class="nv"&gt;GIT_SSH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/path/to/your_script/my_ssh.sh git pull
+
+&lt;span class="c"&gt;# 同個session下&lt;/span&gt;
+&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;GIT_SSH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/path/to/your_script/my_ssh.sh
+
+&lt;span class="c"&gt;# 每次開啟bash&lt;/span&gt;
+&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;GIT_SSH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/path/to/your_script/my_ssh.sh &lt;span class="c"&gt;# append in .bashrc&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;參考資料: &lt;a href="http://stackoverflow.com/a/9321723"&gt;Specify private SSH-key to use when executing shell command with or without Ruby?&lt;/a&gt; 裡面還有其他approach&lt;/p&gt;</summary><category term="git"></category></entry><entry><title>crontab jobs are executed sequentially</title><link href="https://ckclark.github.io/blog/2016/03/14/crontab-jobs-are-executed-sequentially/" rel="alternate"></link><updated>2016-03-14T12:20:54+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2016-03-14:blog/2016/03/14/crontab-jobs-are-executed-sequentially/</id><summary type="html">&lt;p&gt;原來crontab的job是依序執行的 想要平行執行請加&amp;amp;在後面&lt;/p&gt;</summary><category term="linux"></category><category term="crontab"></category></entry><entry><title>itertools.product will cause MemoryError</title><link href="https://ckclark.github.io/blog/2015/12/22/itertools-product-will-cause-memoryerror/" rel="alternate"></link><updated>2015-12-22T15:12:58+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2015-12-22:blog/2015/12/22/itertools-product-will-cause-memoryerror/</id><summary type="html">&lt;h2&gt;使用&lt;a href="https://docs.python.org/2/library/itertools.html#itertools.product"&gt;itertools.product&lt;/a&gt;的時候請小心&lt;code&gt;MemoryError&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;雖然當其中一個或全部參數都是無窮數列的時候理論上也是能跑出結果&lt;br /&gt;
 不過&lt;code&gt;itertools.product&lt;/code&gt;的行為會需要重跑其中的iterable (不一定所有傳進來的iterable都是能夠重跑的 也不見得重跑會有一樣結果)&lt;br /&gt;
 所以實作上就會試著先把傳進來的iterable都變成&lt;code&gt;tuple&lt;/code&gt;暫存起來&lt;br /&gt;
@@ -312,7 +332,7 @@ Date:   Tue Sep &lt;span class="m"&gt;25&lt;/span&gt; 00:48:11 &lt;span class="m
 
 &lt;p&gt;&lt;a href="https://github.com/git/git/commit/a427ef7acc9d932d1c203dd2fae67f51c4b1d1e8"&gt;See patch detail&lt;/a&gt;&lt;br /&gt;
 順便還可以找到這個之前google不到的 &lt;a href="http://stackoverflow.com/questions/7435002/mergetool-from-gitconfig-being-ignored"&gt;SO討論串&lt;/a&gt;  &lt;/p&gt;
-&lt;p&gt;打完收工&lt;/p&gt;</summary><category term="git"></category></entry><entry><title>[Encrypted] encrypted post test</title><link href="https://ckclark.github.io/blog/2015/11/17/encrypted-post-test/" rel="alternate"></link><updated>2015-11-17T18:55:55+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2015-11-17:blog/2015/11/17/encrypted-post-test/</id><summary type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;H/Af79AKeSGV8R+vks5Faw==;RtAN9SwCnNLoc5V8pKXsuMoZMm+Z5BCpb+wyTSo3Q7ks7Tu6Wt5zrHmFbeYkM68beN2Yh/Sq//iblhMyWAyJNorR+Cx0Sh8ggOcqhCOZm4IxJyjG3fwUEiFdY1BnjL1BbRpcOhkGQ85wT5jYbpAzYb7WwUYEZJgLhSYUO1hvS+NWtNR3eagba3Lh5/axMGXFTxicfcvblhroM9CBV+t5zQ==;^&lt;/div&gt;
+&lt;p&gt;打完收工&lt;/p&gt;</summary><category term="git"></category></entry><entry><title>[Encrypted] encrypted post test</title><link href="https://ckclark.github.io/blog/2015/11/17/encrypted-post-test/" rel="alternate"></link><updated>2015-11-17T18:55:55+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2015-11-17:blog/2015/11/17/encrypted-post-test/</id><summary type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;KxxMlu0Qs8T1gXTpKbCGhg==;UST947/2tUdZRsEHug5QYE8vyBlKTwr2d/aNg+dLX+juoMmVRyXA6EyZp5yf+HyvnNuGu4jiGIxICygRBI9HZ6pwmAJDjChNvyIzQPTF6qAf+bSCHg2821fmtqWNPtY51c63L0nrDN3y1qx9+ax3HVrci9v7+A5GXsWcVBLHVRCzLHcgvaw5aPmeJnMUV1yWkVaZbxc5UMXwR2A8lsqmhA==;^&lt;/div&gt;
 &lt;div id="pec-decrypted-content"&gt;
     &lt;h4&gt;&lt;i&gt;The content is encrypted, please enter password&lt;/i&gt;&lt;/h4&gt;
 &lt;/div&gt;
