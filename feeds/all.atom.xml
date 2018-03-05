@@ -1,134 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>ckclark's Blog</title><link href="https://ckclark.github.io/" rel="alternate"></link><link href="https://ckclark.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ckclark.github.io/</id><updated>2016-03-21T14:57:22+08:00</updated><entry><title>Use another location of ssh key while using git</title><link href="https://ckclark.github.io/blog/2016/03/21/use-another-location-of-ssh-key-while-using-git/" rel="alternate"></link><updated>2016-03-21T14:57:22+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2016-03-21:blog/2016/03/21/use-another-location-of-ssh-key-while-using-git/</id><summary type="html">&lt;p&gt;當需要暫時(或一直)用別的ssh key來連線時 可以用&lt;code&gt;GIT_SSH&lt;/code&gt;這個env var來完成&lt;br /&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>ckclark's Blog</title><link href="https://ckclark.csie.org/" rel="alternate"></link><link href="https://ckclark.csie.org/feeds/all.atom.xml" rel="self"></link><id>https://ckclark.csie.org/</id><updated>2016-03-21T14:57:22+08:00</updated><entry><title>Use another location of ssh key while using git</title><link href="https://ckclark.csie.org/blog/2016/03/21/use-another-location-of-ssh-key-while-using-git/" rel="alternate"></link><published>2016-03-21T14:57:22+08:00</published><updated>2016-03-21T14:57:22+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.csie.org,2016-03-21:/blog/2016/03/21/use-another-location-of-ssh-key-while-using-git/</id><summary type="html">&lt;p&gt;當需要暫時(或一直)用別的ssh key來連線時 可以用&lt;code&gt;GIT_SSH&lt;/code&gt;這個env var來完成&lt;br&gt;
 使用方式如下  &lt;/p&gt;
 &lt;p&gt;在&lt;code&gt;/path/to/your_script/my_ssh.sh&lt;/code&gt;裡面寫&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/bin/bash&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 ssh -i /path/to/your/private/key/id_rsa &lt;span class="nv"&gt;$1&lt;/span&gt; &lt;span class="nv"&gt;$2&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;然後再視情況設定&lt;code&gt;GIT_SSH&lt;/code&gt;這個env var&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# 一次性的&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 一次性的&lt;/span&gt;
 &lt;span class="nv"&gt;GIT_SSH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/path/to/your_script/my_ssh.sh git pull
 
-&lt;span class="c"&gt;# 同個session下&lt;/span&gt;
-&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;GIT_SSH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/path/to/your_script/my_ssh.sh
+&lt;span class="c1"&gt;# 同個session下&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;GIT_SSH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/path/to/your_script/my_ssh.sh
 
-&lt;span class="c"&gt;# 每次開啟bash&lt;/span&gt;
-&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;GIT_SSH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/path/to/your_script/my_ssh.sh &lt;span class="c"&gt;# append in .bashrc&lt;/span&gt;
+&lt;span class="c1"&gt;# 每次開啟bash …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;當需要暫時(或一直)用別的ssh key來連線時 可以用&lt;code&gt;GIT_SSH&lt;/code&gt;這個env var來完成&lt;br&gt;
+使用方式如下  &lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;/path/to/your_script/my_ssh.sh&lt;/code&gt;裡面寫&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+ssh -i /path/to/your/private/key/id_rsa &lt;span class="nv"&gt;$1&lt;/span&gt; &lt;span class="nv"&gt;$2&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;參考資料: &lt;a href="http://stackoverflow.com/a/9321723"&gt;Specify private SSH-key to use when executing shell command with or without Ruby?&lt;/a&gt; 裡面還有其他approach&lt;/p&gt;</summary><category term="git"></category></entry><entry><title>crontab jobs are executed sequentially</title><link href="https://ckclark.github.io/blog/2016/03/14/crontab-jobs-are-executed-sequentially/" rel="alternate"></link><updated>2016-03-14T12:20:54+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2016-03-14:blog/2016/03/14/crontab-jobs-are-executed-sequentially/</id><summary type="html">&lt;p&gt;原來crontab的job是依序執行的 想要平行執行請加&amp;amp;在後面&lt;/p&gt;</summary><category term="linux"></category><category term="crontab"></category></entry><entry><title>itertools.product will cause MemoryError</title><link href="https://ckclark.github.io/blog/2015/12/22/itertools-product-will-cause-memoryerror/" rel="alternate"></link><updated>2015-12-22T15:12:58+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2015-12-22:blog/2015/12/22/itertools-product-will-cause-memoryerror/</id><summary type="html">&lt;h2&gt;使用&lt;a href="https://docs.python.org/2/library/itertools.html#itertools.product"&gt;itertools.product&lt;/a&gt;的時候請小心&lt;code&gt;MemoryError&lt;/code&gt;&lt;/h2&gt;
-&lt;p&gt;雖然當其中一個或全部參數都是無窮數列的時候理論上也是能跑出結果&lt;br /&gt;
-不過&lt;code&gt;itertools.product&lt;/code&gt;的行為會需要重跑其中的iterable (不一定所有傳進來的iterable都是能夠重跑的 也不見得重跑會有一樣結果)&lt;br /&gt;
-所以實作上就會試著先把傳進來的iterable都變成&lt;code&gt;tuple&lt;/code&gt;暫存起來&lt;br /&gt;
-那當其中一個是無窮數列的時候 就爆炸囉&lt;br /&gt;
-順帶一提 我的情況是需要建出&lt;code&gt;(0, 1, 2, 3, ...) x 'ABCD' =&amp;gt; (0A, 0B, 0C, 0D, 1A, 1C, ...)&lt;/code&gt; 直到第n個item&lt;br /&gt;
+&lt;p&gt;然後再視情況設定&lt;code&gt;GIT_SSH&lt;/code&gt;這個env var&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 一次性的&lt;/span&gt;
+&lt;span class="nv"&gt;GIT_SSH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/path/to/your_script/my_ssh.sh git pull
+
+&lt;span class="c1"&gt;# 同個session下&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;GIT_SSH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/path/to/your_script/my_ssh.sh
+
+&lt;span class="c1"&gt;# 每次開啟bash&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;GIT_SSH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/path/to/your_script/my_ssh.sh &lt;span class="c1"&gt;# append in .bashrc&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;參考資料: &lt;a href="http://stackoverflow.com/a/9321723"&gt;Specify private SSH-key to use when executing shell command with or without Ruby?&lt;/a&gt; 裡面還有其他approach&lt;/p&gt;</content><category term="git"></category></entry><entry><title>crontab jobs are executed sequentially</title><link href="https://ckclark.csie.org/blog/2016/03/14/crontab-jobs-are-executed-sequentially/" rel="alternate"></link><published>2016-03-14T12:20:54+08:00</published><updated>2016-03-14T12:20:54+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.csie.org,2016-03-14:/blog/2016/03/14/crontab-jobs-are-executed-sequentially/</id><summary type="html">&lt;p&gt;原來crontab的job是依序執行的 想要平行執行請加&amp;amp;在後面&lt;/p&gt;</summary><content type="html">&lt;p&gt;原來crontab的job是依序執行的 想要平行執行請加&amp;amp;在後面&lt;/p&gt;</content><category term="linux"></category><category term="crontab"></category></entry><entry><title>itertools.product will cause MemoryError</title><link href="https://ckclark.csie.org/blog/2015/12/22/itertools-product-will-cause-memoryerror/" rel="alternate"></link><published>2015-12-22T15:12:58+08:00</published><updated>2015-12-22T15:12:58+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.csie.org,2015-12-22:/blog/2015/12/22/itertools-product-will-cause-memoryerror/</id><summary type="html">&lt;h2&gt;使用&lt;a href="https://docs.python.org/2/library/itertools.html#itertools.product"&gt;itertools.product&lt;/a&gt;的時候請小心&lt;code&gt;MemoryError&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;雖然當其中一個或全部參數都是無窮數列的時候理論上也是能跑出結果&lt;br&gt;
+不過&lt;code&gt;itertools.product&lt;/code&gt;的行為會需要重跑其中的iterable (不一定所有傳進來的iterable都是能夠重跑的 也不見得重跑會有一樣結果)&lt;br&gt;
+所以實作上就會試著先把傳進來的iterable都變成&lt;code&gt;tuple&lt;/code&gt;暫存起來&lt;br&gt;
+那當其中一個是無窮數列的時候 就爆炸囉&lt;br&gt;
+順帶一提 我的情況是需要建出&lt;code&gt;(0, 1, 2, 3, ...) x 'ABCD' =&amp;gt; (0A, 0B, 0C, 0D, 1A, 1C, ...)&lt;/code&gt; 直到第n個item&lt;br&gt;
 原本想法是用  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;letter&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;zip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;product&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;itertools&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;ABCD&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="nb"&gt;xrange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;letter&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;zip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;product&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;itertools&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;ABCD&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="nb"&gt;xrange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
     &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;letter&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;結果就當掉 連滑鼠都沒反應 只好hard reset GG&lt;br /&gt;
+&lt;p&gt;結果就當掉 連滑鼠都沒反應 …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;使用&lt;a href="https://docs.python.org/2/library/itertools.html#itertools.product"&gt;itertools.product&lt;/a&gt;的時候請小心&lt;code&gt;MemoryError&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;雖然當其中一個或全部參數都是無窮數列的時候理論上也是能跑出結果&lt;br&gt;
+不過&lt;code&gt;itertools.product&lt;/code&gt;的行為會需要重跑其中的iterable (不一定所有傳進來的iterable都是能夠重跑的 也不見得重跑會有一樣結果)&lt;br&gt;
+所以實作上就會試著先把傳進來的iterable都變成&lt;code&gt;tuple&lt;/code&gt;暫存起來&lt;br&gt;
+那當其中一個是無窮數列的時候 就爆炸囉&lt;br&gt;
+順帶一提 我的情況是需要建出&lt;code&gt;(0, 1, 2, 3, ...) x 'ABCD' =&amp;gt; (0A, 0B, 0C, 0D, 1A, 1C, ...)&lt;/code&gt; 直到第n個item&lt;br&gt;
+原本想法是用  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;letter&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;zip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;product&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;itertools&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;ABCD&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="nb"&gt;xrange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;letter&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;結果就當掉 連滑鼠都沒反應 只好hard reset GG&lt;br&gt;
 解法大概就把&lt;code&gt;itertools.count()&lt;/code&gt;改成&lt;code&gt;xrange(n / 4 + 1)&lt;/code&gt;之類囉  &lt;/p&gt;
-&lt;p&gt;ref1: &lt;a href="http://stackoverflow.com/questions/8695422/why-do-i-get-a-memoryerror-with-itertools-product"&gt;[SO]Why do I get a MemoryError with itertools.product?&lt;/a&gt;&lt;br /&gt;
-ref2: &lt;a href="https://hg.python.org/cpython/file/v2.7.6/Modules/itertoolsmodule.c#l1854"&gt;python source: itertoolsmodule.c#l1854&lt;/a&gt;&lt;/p&gt;</summary><category term="python"></category><category term="itertools"></category></entry><entry><title>--reset-author flag in git commit</title><link href="https://ckclark.github.io/blog/2015/12/10/-reset-author-flag-in-git-commit/" rel="alternate"></link><updated>2015-12-10T18:37:03+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2015-12-10:blog/2015/12/10/-reset-author-flag-in-git-commit/</id><summary type="html">&lt;p&gt;當使用&lt;code&gt;git commit -c/--reedit-message&lt;/code&gt;或&lt;code&gt;git commit -C/--reuse-message&lt;/code&gt;的場合&lt;br /&gt;
-有時候只是想拿上個 commit message 當 template 來用(like &lt;code&gt;git commit -c HEAD&lt;/code&gt;)&lt;br /&gt;
-不過最近發現 author date 也會沿用這個指定的commit的&lt;br /&gt;
+&lt;p&gt;ref1: &lt;a href="http://stackoverflow.com/questions/8695422/why-do-i-get-a-memoryerror-with-itertools-product"&gt;[SO]Why do I get a MemoryError with itertools.product?&lt;/a&gt;&lt;br&gt;
+ref2: &lt;a href="https://hg.python.org/cpython/file/v2.7.6/Modules/itertoolsmodule.c#l1854"&gt;python source: itertoolsmodule.c#l1854&lt;/a&gt;&lt;/p&gt;</content><category term="python"></category><category term="itertools"></category></entry><entry><title>--reset-author flag in git commit</title><link href="https://ckclark.csie.org/blog/2015/12/10/-reset-author-flag-in-git-commit/" rel="alternate"></link><published>2015-12-10T18:37:03+08:00</published><updated>2015-12-10T18:37:03+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.csie.org,2015-12-10:/blog/2015/12/10/-reset-author-flag-in-git-commit/</id><summary type="html">&lt;p&gt;當使用&lt;code&gt;git commit -c/--reedit-message&lt;/code&gt;或&lt;code&gt;git commit -C/--reuse-message&lt;/code&gt;的場合&lt;br&gt;
+有時候只是想拿上個 commit message 當 template 來用(like &lt;code&gt;git commit -c HEAD&lt;/code&gt;)&lt;br&gt;
+不過最近發現 author date 也會沿用這個指定的commit的&lt;br&gt;
 查了一下在&lt;a href="https://git-scm.com/docs/git-commit"&gt;manual&lt;/a&gt;裡面有提到  &lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;-C &amp;lt;commit&amp;gt;
---reuse-message=&amp;lt;commit&amp;gt;&lt;br /&gt;
+--reuse-message=&amp;lt;commit&amp;gt;&lt;br&gt;
+Take an existing commit object, and reuse the log message and the authorship information (&lt;strong&gt;including the timestamp …&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;p&gt;當使用&lt;code&gt;git commit -c/--reedit-message&lt;/code&gt;或&lt;code&gt;git commit -C/--reuse-message&lt;/code&gt;的場合&lt;br&gt;
+有時候只是想拿上個 commit message 當 template 來用(like &lt;code&gt;git commit -c HEAD&lt;/code&gt;)&lt;br&gt;
+不過最近發現 author date 也會沿用這個指定的commit的&lt;br&gt;
+查了一下在&lt;a href="https://git-scm.com/docs/git-commit"&gt;manual&lt;/a&gt;裡面有提到  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;-C &amp;lt;commit&amp;gt;
+--reuse-message=&amp;lt;commit&amp;gt;&lt;br&gt;
 Take an existing commit object, and reuse the log message and the authorship information (&lt;strong&gt;including the timestamp&lt;/strong&gt;) when creating the commit.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;解決方法就是加上&lt;code&gt;--reset-author&lt;/code&gt;就搞定了&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;--reset-author&lt;br /&gt;
+&lt;p&gt;--reset-author&lt;br&gt;
 When used with -C/-c/--amend options, or when committing after a a conflicting cherry-pick,
 declare that the authorship of the resulting commit now belongs to the committer.
 This also renews the author timestamp.&lt;/p&gt;
-&lt;/blockquote&gt;</summary><category term="git"></category></entry><entry><title>Find git difftool fix using git bisect</title><link href="https://ckclark.github.io/blog/2015/11/19/find-git-difftool-fix-using-git-bisect/" rel="alternate"></link><updated>2015-11-19T20:45:53+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2015-11-19:blog/2015/11/19/find-git-difftool-fix-using-git-bisect/</id><summary type="html">&lt;p&gt;用了 git 一陣子 覺得&lt;code&gt;diff.tool&lt;/code&gt;設成&lt;code&gt;vimdiff&lt;/code&gt;後有點麻煩 每次都是Read-only的狀態&lt;br /&gt;
+&lt;/blockquote&gt;</content><category term="git"></category></entry><entry><title>Find git difftool fix using git bisect</title><link href="https://ckclark.csie.org/blog/2015/11/19/find-git-difftool-fix-using-git-bisect/" rel="alternate"></link><published>2015-11-19T20:45:53+08:00</published><updated>2015-11-19T20:45:53+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.csie.org,2015-11-19:/blog/2015/11/19/find-git-difftool-fix-using-git-bisect/</id><summary type="html">&lt;p&gt;用了 git 一陣子 覺得&lt;code&gt;diff.tool&lt;/code&gt;設成&lt;code&gt;vimdiff&lt;/code&gt;後有點麻煩 每次都是Read-only的狀態&lt;br&gt;
 發現網路上有一個 &lt;a href="http://stackoverflow.com/a/25252804"&gt;設定&lt;/a&gt;  其實就是去改 git 實作 
-&lt;code&gt;diff.tool=vimdiff&lt;/code&gt; 的 &lt;a href="https://github.com/git/git/blob/8d530c4d64ffcc853889f7b385f554d53db375ed/mergetools/vimdiff#L2"&gt;command&lt;/a&gt; 而已&lt;br /&gt;
-奇怪的是 照著做後 有一台電腦可以 另一台電腦卻不行&lt;br /&gt;
-網路上大部分也都說 打開後再設&lt;code&gt;:set noro&lt;/code&gt;就好了&lt;br /&gt;
-不過既然都有一台電腦可行了 當然要把它找出來囉&lt;br /&gt;
-反覆比較後 發現原來是 git 的版本不一樣(現在想想好像也理所當然)&lt;br /&gt;
+&lt;code&gt;diff.tool=vimdiff&lt;/code&gt; 的 &lt;a href="https://github.com/git/git/blob/8d530c4d64ffcc853889f7b385f554d53db375ed/mergetools/vimdiff#L2"&gt;command&lt;/a&gt; 而已&lt;br&gt;
+奇怪的是 照著做後 有一台電腦可以 另一台電腦卻不行&lt;br&gt;
+網路上大部分也都說 打開後再設&lt;code&gt;:set noro&lt;/code&gt;就好了&lt;br&gt;
+不過既然都有一台電腦可行了 當然要把它找出來囉&lt;br&gt;
+反覆比較後 發現原來是 git 的版本不一樣(現在想想好像也理所當然)&lt;br&gt;
+正巧 git 學了這麼久還沒用過&lt;code&gt;git bisect&lt;/code&gt; 來玩玩看好了  &lt;/p&gt;
+</summary><content type="html">&lt;p&gt;用了 git 一陣子 覺得&lt;code&gt;diff.tool&lt;/code&gt;設成&lt;code&gt;vimdiff&lt;/code&gt;後有點麻煩 每次都是Read-only的狀態&lt;br&gt;
+發現網路上有一個 &lt;a href="http://stackoverflow.com/a/25252804"&gt;設定&lt;/a&gt;  其實就是去改 git 實作 
+&lt;code&gt;diff.tool=vimdiff&lt;/code&gt; 的 &lt;a href="https://github.com/git/git/blob/8d530c4d64ffcc853889f7b385f554d53db375ed/mergetools/vimdiff#L2"&gt;command&lt;/a&gt; 而已&lt;br&gt;
+奇怪的是 照著做後 有一台電腦可以 另一台電腦卻不行&lt;br&gt;
+網路上大部分也都說 打開後再設&lt;code&gt;:set noro&lt;/code&gt;就好了&lt;br&gt;
+不過既然都有一台電腦可行了 當然要把它找出來囉&lt;br&gt;
+反覆比較後 發現原來是 git 的版本不一樣(現在想想好像也理所當然)&lt;br&gt;
 正巧 git 學了這麼久還沒用過&lt;code&gt;git bisect&lt;/code&gt; 來玩玩看好了  &lt;/p&gt;
 
 
 &lt;p&gt;以下是&lt;code&gt;git difftool&lt;/code&gt;開vimdiff後會顯示&lt;code&gt;[RO]&lt;/code&gt;在檔名旁邊的版本&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git --version
-git version 1.7.9.5
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git --version
+git version &lt;span class="m"&gt;1&lt;/span&gt;.7.9.5
 
-&lt;span class="nv"&gt;$ &lt;/span&gt;git config diff.tool
+$ git config diff.tool
 vimdiff
 
-&lt;span class="nv"&gt;$ &lt;/span&gt;git config difftool.vimdiff.cmd
+$ git config difftool.vimdiff.cmd
 vim -f -d -c &lt;span class="s2"&gt;&amp;quot;wincmd l&amp;quot;&lt;/span&gt; -c &lt;span class="s1"&gt;&amp;#39;cd &amp;quot;$GIT_PREFIX&amp;quot;&amp;#39;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$LOCAL&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$REMOTE&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 
-&lt;span class="nv"&gt;$ &lt;/span&gt;git difftool
+$ git difftool
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="" src="/images/difftool_RO.png" /&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="/images/difftool_RO.png"&gt;  &lt;/p&gt;
 &lt;p&gt;以下是預期的版本  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git --version
-git version 1.9.1
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git --version
+git version &lt;span class="m"&gt;1&lt;/span&gt;.9.1
 
-&lt;span class="nv"&gt;$ &lt;/span&gt;git config diff.tool
+$ git config diff.tool
 vimdiff
 
-&lt;span class="nv"&gt;$ &lt;/span&gt;git config difftool.vimdiff.cmd
+$ git config difftool.vimdiff.cmd
 vim -f -d -c &lt;span class="s2"&gt;&amp;quot;wincmd l&amp;quot;&lt;/span&gt; -c &lt;span class="s1"&gt;&amp;#39;cd &amp;quot;$GIT_PREFIX&amp;quot;&amp;#39;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$LOCAL&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$REMOTE&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 
-&lt;span class="nv"&gt;$ &lt;/span&gt;git difftool
+$ git difftool
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="" src="/images/difftool_NORO.png" /&gt;  &lt;/p&gt;
-&lt;p&gt;好的 既然知道是版本問題 那就動工吧&lt;br /&gt;
+&lt;p&gt;&lt;img alt="" src="/images/difftool_NORO.png"&gt;  &lt;/p&gt;
+&lt;p&gt;好的 既然知道是版本問題 那就動工吧&lt;br&gt;
 首先先把 &lt;a href="https://github.com/git/git"&gt;git&lt;/a&gt; 載下來  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git clone https://github.com/git/git.git
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git clone https://github.com/git/git.git
 Cloning into &lt;span class="s1"&gt;&amp;#39;git&amp;#39;&lt;/span&gt;...
-remote: Counting objects: 194185, &lt;span class="k"&gt;done&lt;/span&gt;.
-remote: Total &lt;span class="m"&gt;194185&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;delta 0&lt;span class="o"&gt;)&lt;/span&gt;, reused &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;delta 0&lt;span class="o"&gt;)&lt;/span&gt;, pack-reused 194185
-Receiving objects: 100% &lt;span class="o"&gt;(&lt;/span&gt;194185/194185&lt;span class="o"&gt;)&lt;/span&gt;, 67.55 MiB &lt;span class="p"&gt;|&lt;/span&gt; 426.00 KiB/s, &lt;span class="k"&gt;done&lt;/span&gt;.
-Resolving deltas: 100% &lt;span class="o"&gt;(&lt;/span&gt;141771/141771&lt;span class="o"&gt;)&lt;/span&gt;, &lt;span class="k"&gt;done&lt;/span&gt;.
+remote: Counting objects: &lt;span class="m"&gt;194185&lt;/span&gt;, &lt;span class="k"&gt;done&lt;/span&gt;.
+remote: Total &lt;span class="m"&gt;194185&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;delta &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;, reused &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;delta &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;, pack-reused &lt;span class="m"&gt;194185&lt;/span&gt;
+Receiving objects: &lt;span class="m"&gt;100&lt;/span&gt;% &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;194185&lt;/span&gt;/194185&lt;span class="o"&gt;)&lt;/span&gt;, &lt;span class="m"&gt;67&lt;/span&gt;.55 MiB &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="m"&gt;426&lt;/span&gt;.00 KiB/s, &lt;span class="k"&gt;done&lt;/span&gt;.
+Resolving deltas: &lt;span class="m"&gt;100&lt;/span&gt;% &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;141771&lt;/span&gt;/141771&lt;span class="o"&gt;)&lt;/span&gt;, &lt;span class="k"&gt;done&lt;/span&gt;.
 Checking connectivity... &lt;span class="k"&gt;done&lt;/span&gt;.
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;接下來 可以開始使用 &lt;code&gt;git bisect&lt;/code&gt; 了&lt;br /&gt;
-...&lt;br /&gt;
-...&lt;br /&gt;
-man了一下 &lt;code&gt;git bisect&lt;/code&gt; 才發現這是要拿來找bug不是要找fix的啊&lt;br /&gt;
-真的要操作下去不就要&lt;code&gt;git bisect good&lt;/code&gt;當做還沒修掉, &lt;code&gt;git bisect bad&lt;/code&gt;當做修掉了嗎XDD(話說我還真的這樣操作了)&lt;br /&gt;
-不過問了一下Google大神 祂很親切的告訴我們 何不使用 &lt;a href="http://stackoverflow.com/a/17153598"&gt;alias&lt;/a&gt; 呢&lt;br /&gt;
+&lt;p&gt;接下來 可以開始使用 &lt;code&gt;git bisect&lt;/code&gt; 了&lt;br&gt;
+...&lt;br&gt;
+...&lt;br&gt;
+man了一下 &lt;code&gt;git bisect&lt;/code&gt; 才發現這是要拿來找bug不是要找fix的啊&lt;br&gt;
+真的要操作下去不就要&lt;code&gt;git bisect good&lt;/code&gt;當做還沒修掉, &lt;code&gt;git bisect bad&lt;/code&gt;當做修掉了嗎XDD(話說我還真的這樣操作了)&lt;br&gt;
+不過問了一下Google大神 祂很親切的告訴我們 何不使用 &lt;a href="http://stackoverflow.com/a/17153598"&gt;alias&lt;/a&gt; 呢&lt;br&gt;
 在加了&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
     &lt;span class="na"&gt;bisect-fixed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;bisect bad&lt;/span&gt;
 &lt;span class="s"&gt;    bisect-unfixed = bisect good&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;之後 開始玩吧&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;git bisect start
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; $ git bisect start
 
-&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;git bisect-fixed v1.9.1
+&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; $ git bisect-fixed v1.9.1
 
-&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;git bisect-unfixed v1.7.9.5
-Bisecting: &lt;span class="m"&gt;3936&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test &lt;/span&gt;after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;12&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; $ git bisect-unfixed v1.7.9.5
+Bisecting: &lt;span class="m"&gt;3936&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test&lt;/span&gt; after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;12&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;b9a5f6811d186ec2420df39e3ec8087c7166a636&lt;span class="o"&gt;]&lt;/span&gt; Merge branch &lt;span class="s1"&gt;&amp;#39;jk/doc-makefile-cleanup&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;現在可以看到git幫我們選了一版要讓我們測試了&lt;br /&gt;
+&lt;p&gt;現在可以看到git幫我們選了一版要讓我們測試了&lt;br&gt;
 就給他無腦&lt;code&gt;make&lt;/code&gt;下去吧  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;make -j8
-&lt;span class="nv"&gt;GIT_VERSION&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; 1.8.1.2.564.gb9a5f68
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; $ make -j8
+&lt;span class="nv"&gt;GIT_VERSION&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;.8.1.2.564.gb9a5f68
     * new build flags
     * new link flags
     * new prefix flags
@@ -140,22 +182,22 @@ Bisecting: &lt;span class="m"&gt;3936&lt;/span&gt; revisions left to &lt;span cl
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;看似build完了&lt;br /&gt;
+&lt;p&gt;看似build完了&lt;br&gt;
 讓我們試試這版長怎樣&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;# hello world&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; .gitignore
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; $ &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;# hello world&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; .gitignore
 
-&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;./git difftool
-/tmp/git/./git-difftool--helper: 58: .: Can&lt;span class="s1"&gt;&amp;#39;t open /home/ckclark/libexec/git-core/mergetools/defaults&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; $ ./git difftool
+/tmp/git/./git-difftool--helper: &lt;span class="m"&gt;58&lt;/span&gt;: .: Can&lt;span class="s1"&gt;&amp;#39;t open /home/ckclark/libexec/git-core/mergetools/defaults&lt;/span&gt;
 &lt;span class="s1"&gt;merge tool candidates: meld opendiff kdiff3 tkdiff xxdiff kompare gvimdiff diffuse ecmerge p4merge araxis bc3 codecompare emerge vimdiff&lt;/span&gt;
 &lt;span class="s1"&gt;/tmp/git/./git-difftool--helper: 58: .: Can&amp;#39;&lt;/span&gt;t open /home/ckclark/libexec/git-core/mergetools/defaults
 external diff died, stopping at .gitignore.
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;這啥&lt;br /&gt;
-仔細追了一下原來是&lt;code&gt;libexec&lt;/code&gt;沒設定好&lt;br /&gt;
+&lt;p&gt;這啥&lt;br&gt;
+仔細追了一下原來是&lt;code&gt;libexec&lt;/code&gt;沒設定好&lt;br&gt;
 那改一下&lt;code&gt;Makefile&lt;/code&gt;囉&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gu"&gt;@@ -371,7 +371,7 @@ bindir_relative = bin&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gu"&gt;@@ -371,7 +371,7 @@ bindir_relative = bin&lt;/span&gt;
  bindir = $(prefix)/$(bindir_relative)
  mandir = share/man
  infodir = share/info
@@ -167,23 +209,23 @@ external diff died, stopping at .gitignore.
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;改完就順便把它&lt;code&gt;git stash&lt;/code&gt;一下 之後也方便&lt;code&gt;git stash apply&lt;/code&gt;&lt;br /&gt;
+&lt;p&gt;改完就順便把它&lt;code&gt;git stash&lt;/code&gt;一下 之後也方便&lt;code&gt;git stash apply&lt;/code&gt;&lt;br&gt;
 待會的&lt;code&gt;./git difftool&lt;/code&gt;還剛好可以拿來diff這個檔案  &lt;/p&gt;
-&lt;p&gt;在這邊如果想要乾淨回到這個commit checkout的狀態&lt;br /&gt;
+&lt;p&gt;在這邊如果想要乾淨回到這個commit checkout的狀態&lt;br&gt;
 我是都用&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;rm .gitignore
-&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;git clean -df
-&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;git checkout -- .
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; $ rm .gitignore
+&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; $ git clean -df
+&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; $ git checkout -- .
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;三連發 連被ignore掉的都要清得乾乾淨淨(這邊沒有仔細去google有沒有比較簡單的command)  &lt;/p&gt;
 &lt;p&gt;好的 讓我們繼續看下去&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;git stash show -p
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; $ git stash show -p
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gh"&gt;diff --git a/Makefile b/Makefile&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gh"&gt;diff --git a/Makefile b/Makefile&lt;/span&gt;
 &lt;span class="gh"&gt;index 5a2e02d..7ccfd93 100644&lt;/span&gt;
 &lt;span class="gd"&gt;--- a/Makefile&lt;/span&gt;
 &lt;span class="gi"&gt;+++ b/Makefile&lt;/span&gt;
@@ -199,14 +241,14 @@ external diff died, stopping at .gitignore.
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;git status
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; $ git status
 HEAD detached at b9a5f68
 You are currently bisecting, started from branch &lt;span class="s1"&gt;&amp;#39;master&amp;#39;&lt;/span&gt;.
   &lt;span class="o"&gt;(&lt;/span&gt;use &lt;span class="s2"&gt;&amp;quot;git bisect reset&amp;quot;&lt;/span&gt; to get back to the original branch&lt;span class="o"&gt;)&lt;/span&gt;
 
 nothing to commit, working directory clean
 
-&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;git stash apply
+&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; $ git stash apply
 HEAD detached at b9a5f68
 You are currently bisecting, started from branch &lt;span class="s1"&gt;&amp;#39;master&amp;#39;&lt;/span&gt;.
   &lt;span class="o"&gt;(&lt;/span&gt;use &lt;span class="s2"&gt;&amp;quot;git bisect reset&amp;quot;&lt;/span&gt; to get back to the original branch&lt;span class="o"&gt;)&lt;/span&gt;
@@ -219,83 +261,83 @@ Changes not staged &lt;span class="k"&gt;for&lt;/span&gt; commit:
 
 no changes added to commit &lt;span class="o"&gt;(&lt;/span&gt;use &lt;span class="s2"&gt;&amp;quot;git add&amp;quot;&lt;/span&gt; and/or &lt;span class="s2"&gt;&amp;quot;git commit -a&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
 
-&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;make -j8
+&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; $ make -j8
 ...skipped...
 
-&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;./git difftool 
+&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; $ ./git difftool 
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="" src="/images/difftool_fixed.png" /&gt;&lt;/p&gt;
-&lt;p&gt;看起來這版有fix耶 那可以看下一版了&lt;br /&gt;
+&lt;p&gt;&lt;img alt="" src="/images/difftool_fixed.png"&gt;&lt;/p&gt;
+&lt;p&gt;看起來這版有fix耶 那可以看下一版了&lt;br&gt;
 不過記得要先還原乾淨, &lt;code&gt;git bisect&lt;/code&gt; 才會帶入下一版來測&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;rm .gitignore
-&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;git clean -df
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; $ rm .gitignore
+&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; $ git clean -df
 ...
-&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;git checkout -- .
-&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;git bisect-fixed 
-Bisecting: &lt;span class="m"&gt;1966&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test &lt;/span&gt;after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;11&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; $ git checkout -- .
+&lt;span class="o"&gt;[&lt;/span&gt;/tmp/git&lt;span class="o"&gt;]&lt;/span&gt; $ git bisect-fixed 
+Bisecting: &lt;span class="m"&gt;1966&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test&lt;/span&gt; after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;11&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;c90f06efd84ef0ace0c92509a8bfa1bb1d8b05a8&lt;span class="o"&gt;]&lt;/span&gt; Merge branch &lt;span class="s1"&gt;&amp;#39;mk/test-seq&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;然後就
-&lt;code&gt;git stash apply &amp;amp;&amp;amp; make -j8 &amp;amp;&amp;amp; ./git difftool&lt;/code&gt;看&lt;code&gt;vimdiff&lt;/code&gt;有沒有&lt;code&gt;[RO]&lt;/code&gt;在檔名旁邊&lt;br /&gt;
-接下來clean三連發, &lt;code&gt;git bisect-(un)fixed&lt;/code&gt;&lt;br /&gt;
-再來就依此要領 反覆操作 就不贅述了XD&lt;br /&gt;
+&lt;code&gt;git stash apply &amp;amp;&amp;amp; make -j8 &amp;amp;&amp;amp; ./git difftool&lt;/code&gt;看&lt;code&gt;vimdiff&lt;/code&gt;有沒有&lt;code&gt;[RO]&lt;/code&gt;在檔名旁邊&lt;br&gt;
+接下來clean三連發, &lt;code&gt;git bisect-(un)fixed&lt;/code&gt;&lt;br&gt;
+再來就依此要領 反覆操作 就不贅述了XD&lt;br&gt;
 直接把輸出寫在下面  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git bisect-unfixed 
-Bisecting: &lt;span class="m"&gt;982&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test &lt;/span&gt;after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;10&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git bisect-unfixed 
+Bisecting: &lt;span class="m"&gt;982&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test&lt;/span&gt; after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;10&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;2739889c98e8d1c1a40263f7f7c0866879c31edf&lt;span class="o"&gt;]&lt;/span&gt; Merge branch &lt;span class="s1"&gt;&amp;#39;jk/config-ignore-duplicates&amp;#39;&lt;/span&gt;
 ...
-&lt;span class="nv"&gt;$ &lt;/span&gt;git bisect-fixed
-Bisecting: &lt;span class="m"&gt;494&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test &lt;/span&gt;after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;9&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
+$ git bisect-fixed
+Bisecting: &lt;span class="m"&gt;494&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test&lt;/span&gt; after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;9&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;8db3865936550fe239b11a44ed52230c3c3eb223&lt;span class="o"&gt;]&lt;/span&gt; Merge branch &lt;span class="s1"&gt;&amp;#39;pw/p4-submit-conflicts&amp;#39;&lt;/span&gt;
 ...
-&lt;span class="nv"&gt;$ &lt;/span&gt;git bisect-unfixed 
-Bisecting: &lt;span class="m"&gt;246&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test &lt;/span&gt;after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;8&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
+$ git bisect-unfixed 
+Bisecting: &lt;span class="m"&gt;246&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test&lt;/span&gt; after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;8&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;4607a8ce68f4e407bcaaf04819713b40dffce385&lt;span class="o"&gt;]&lt;/span&gt; Merge branch &lt;span class="s1"&gt;&amp;#39;jc/grep-pcre-loose-ends&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;early part&lt;span class="o"&gt;)&lt;/span&gt; into maint
 ...
-&lt;span class="nv"&gt;$ &lt;/span&gt;git bisect-fixed
-Bisecting: &lt;span class="m"&gt;124&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test &lt;/span&gt;after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;7&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
+$ git bisect-fixed
+Bisecting: &lt;span class="m"&gt;124&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test&lt;/span&gt; after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;7&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;4dbf436bffdf43f91852e23018fc0e45c1bfdab8&lt;span class="o"&gt;]&lt;/span&gt; Merge branch &lt;span class="s1"&gt;&amp;#39;jc/blame-follows-renames&amp;#39;&lt;/span&gt;
 ...
-&lt;span class="nv"&gt;$ &lt;/span&gt;git bisect-unfixed
-Bisecting: &lt;span class="m"&gt;61&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test &lt;/span&gt;after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;6&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
+$ git bisect-unfixed
+Bisecting: &lt;span class="m"&gt;61&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test&lt;/span&gt; after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;6&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;b7804cf2277af57785ca0a1686bf6571e711a9ca&lt;span class="o"&gt;]&lt;/span&gt; Merge branch &lt;span class="s1"&gt;&amp;#39;bw/cp-a-is-gnuism&amp;#39;&lt;/span&gt;
 ...
-&lt;span class="nv"&gt;$ &lt;/span&gt;git bisect-fixed
-Bisecting: &lt;span class="m"&gt;31&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test &lt;/span&gt;after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;5&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
+$ git bisect-fixed
+Bisecting: &lt;span class="m"&gt;31&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test&lt;/span&gt; after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;5&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;a967cb15d3eee0d4992f92edab50da0ddbb97738&lt;span class="o"&gt;]&lt;/span&gt; t9164: Add missing quotes in &lt;span class="nb"&gt;test&lt;/span&gt;
 ...
-&lt;span class="nv"&gt;$ &lt;/span&gt;git bisect-fixed
-Bisecting: &lt;span class="m"&gt;12&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test &lt;/span&gt;after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;4&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
+$ git bisect-fixed
+Bisecting: &lt;span class="m"&gt;12&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test&lt;/span&gt; after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;4&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;b65f30b6b3bf34831b32a1b209bc1955f2bf79df&lt;span class="o"&gt;]&lt;/span&gt; Merge branch &lt;span class="s1"&gt;&amp;#39;maint&amp;#39;&lt;/span&gt;
 ...
-&lt;span class="nv"&gt;$ &lt;/span&gt;git bisect-fixed
-Bisecting: &lt;span class="m"&gt;8&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test &lt;/span&gt;after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;3&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
+$ git bisect-fixed
+Bisecting: &lt;span class="m"&gt;8&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test&lt;/span&gt; after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;3&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;abc05cbcd3fdc6e5e14daec80c00b6f51b8e4c7e&lt;span class="o"&gt;]&lt;/span&gt; Merge branch &lt;span class="s1"&gt;&amp;#39;jk/completion-tests&amp;#39;&lt;/span&gt;
 ...
-&lt;span class="nv"&gt;$ &lt;/span&gt;git bisect-fixed
-Bisecting: &lt;span class="m"&gt;4&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test &lt;/span&gt;after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;2&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
+$ git bisect-fixed
+Bisecting: &lt;span class="m"&gt;4&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test&lt;/span&gt; after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;2&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;5ec11ab39d11aecd731044955a7a4f7e925cdba6&lt;span class="o"&gt;]&lt;/span&gt; Merge branch &lt;span class="s1"&gt;&amp;#39;da/mergetool-custom&amp;#39;&lt;/span&gt;
 ...
-&lt;span class="nv"&gt;$ &lt;/span&gt;git bisect-fixed
-Bisecting: &lt;span class="m"&gt;1&lt;/span&gt; revision left to &lt;span class="nb"&gt;test &lt;/span&gt;after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;1&lt;/span&gt; step&lt;span class="o"&gt;)&lt;/span&gt;
+$ git bisect-fixed
+Bisecting: &lt;span class="m"&gt;1&lt;/span&gt; revision left to &lt;span class="nb"&gt;test&lt;/span&gt; after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;1&lt;/span&gt; step&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;69759917aa4b1efb5bf198e76c3664bed9c70d4d&lt;span class="o"&gt;]&lt;/span&gt; Merge branch &lt;span class="s1"&gt;&amp;#39;os/commit-submodule-ignore&amp;#39;&lt;/span&gt;
 ...
-&lt;span class="nv"&gt;$ &lt;/span&gt;git bisect-unfixed
-Bisecting: &lt;span class="m"&gt;0&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test &lt;/span&gt;after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;0&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
+$ git bisect-unfixed
+Bisecting: &lt;span class="m"&gt;0&lt;/span&gt; revisions left to &lt;span class="nb"&gt;test&lt;/span&gt; after this &lt;span class="o"&gt;(&lt;/span&gt;roughly &lt;span class="m"&gt;0&lt;/span&gt; steps&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;a427ef7acc9d932d1c203dd2fae67f51c4b1d1e8&lt;span class="o"&gt;]&lt;/span&gt; mergetool--lib: Allow custom commands to override built-ins
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;到這邊已經幾乎看到這個fix的comment了&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git bisect-fixed
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git bisect-fixed
 a427ef7acc9d932d1c203dd2fae67f51c4b1d1e8 is the first bad commit
 commit a427ef7acc9d932d1c203dd2fae67f51c4b1d1e8
 Author: David Aguilar &amp;lt;davvid@gmail.com&amp;gt;
-Date:   Tue Sep &lt;span class="m"&gt;25&lt;/span&gt; 00:48:11 &lt;span class="m"&gt;2012&lt;/span&gt; -0700
+Date:   Tue Sep &lt;span class="m"&gt;25&lt;/span&gt; &lt;span class="m"&gt;00&lt;/span&gt;:48:11 &lt;span class="m"&gt;2012&lt;/span&gt; -0700
 
     mergetool--lib: Allow custom commands to override built-ins
 
@@ -330,9 +372,9 @@ Date:   Tue Sep &lt;span class="m"&gt;25&lt;/span&gt; 00:48:11 &lt;span class="m
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;a href="https://github.com/git/git/commit/a427ef7acc9d932d1c203dd2fae67f51c4b1d1e8"&gt;See patch detail&lt;/a&gt;&lt;br /&gt;
+&lt;p&gt;&lt;a href="https://github.com/git/git/commit/a427ef7acc9d932d1c203dd2fae67f51c4b1d1e8"&gt;See patch detail&lt;/a&gt;&lt;br&gt;
 順便還可以找到這個之前google不到的 &lt;a href="http://stackoverflow.com/questions/7435002/mergetool-from-gitconfig-being-ignored"&gt;SO討論串&lt;/a&gt;  &lt;/p&gt;
-&lt;p&gt;打完收工&lt;/p&gt;</summary><category term="git"></category></entry><entry><title>[Encrypted] encrypted post test</title><link href="https://ckclark.github.io/blog/2015/11/17/encrypted-post-test/" rel="alternate"></link><updated>2015-11-17T18:55:55+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2015-11-17:blog/2015/11/17/encrypted-post-test/</id><summary type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;KxxMlu0Qs8T1gXTpKbCGhg==;UST947/2tUdZRsEHug5QYE8vyBlKTwr2d/aNg+dLX+juoMmVRyXA6EyZp5yf+HyvnNuGu4jiGIxICygRBI9HZ6pwmAJDjChNvyIzQPTF6qAf+bSCHg2821fmtqWNPtY51c63L0nrDN3y1qx9+ax3HVrci9v7+A5GXsWcVBLHVRCzLHcgvaw5aPmeJnMUV1yWkVaZbxc5UMXwR2A8lsqmhA==;^&lt;/div&gt;
+&lt;p&gt;打完收工&lt;/p&gt;</content><category term="git"></category></entry><entry><title>[Encrypted] encrypted post test</title><link href="https://ckclark.csie.org/blog/2015/11/17/encrypted-post-test/" rel="alternate"></link><published>2015-11-17T18:55:55+08:00</published><updated>2015-11-17T18:55:55+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.csie.org,2015-11-17:/blog/2015/11/17/encrypted-post-test/</id><summary type="html">The content is encrypted, please enter password</summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;CzG8JSracpGd37iVhpxTSQ==;ARI8woVccfD52djNjvpM6uvonY5VG7j1GflsgnOY7Ti2nilFRRSlQf7JgDG7Wgk/WvQgN7jxiyvUBNOmmuEcpWGduqj60zYClbWg+NthDJV18FcEHxIvagOTToUqOnz0NssPVspkIFDBsFEpnfa38SQ7t2bT1IahrQLH65rC7fJG5CzpSiyN7NnNics5UhUWzZIVzD/BxJa9v3gChkpGmA==;^&lt;/div&gt;
 &lt;div id="pec-decrypted-content"&gt;
     &lt;h4&gt;&lt;i&gt;The content is encrypted, please enter password&lt;/i&gt;&lt;/h4&gt;
 &lt;/div&gt;
@@ -430,36 +472,57 @@ Date:   Tue Sep &lt;span class="m"&gt;25&lt;/span&gt; 00:48:11 &lt;span class="m
 
         document.addEventListener('DOMContentLoaded', init_decryptor);
     })();
-&lt;/script&gt;</summary><category term="pelican-plugin"></category><category term="pelican"></category><category term="web"></category></entry><entry><title>Switch to pelican</title><link href="https://ckclark.github.io/blog/2015/11/17/switch-to-pelican/" rel="alternate"></link><updated>2015-11-17T13:17:06+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2015-11-17:blog/2015/11/17/switch-to-pelican/</id><summary type="html">&lt;p&gt;&lt;a href="http://docs.getpelican.com/en/3.6.3/"&gt;pelican&lt;/a&gt;&lt;br /&gt;
-就如同蠻多blogger說的 身為一個pythonist當然就要用python做的static site generator&lt;br /&gt;
+&lt;/script&gt;</content><category term="pelican-plugin"></category><category term="pelican"></category><category term="web"></category></entry><entry><title>Switch to pelican</title><link href="https://ckclark.csie.org/blog/2015/11/17/switch-to-pelican/" rel="alternate"></link><published>2015-11-17T13:17:06+08:00</published><updated>2015-11-17T13:17:06+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.csie.org,2015-11-17:/blog/2015/11/17/switch-to-pelican/</id><summary type="html">&lt;p&gt;&lt;a href="http://docs.getpelican.com/en/3.6.3/"&gt;pelican&lt;/a&gt;&lt;br&gt;
+就如同蠻多blogger說的 身為一個pythonist當然就要用python做的static site generator&lt;br&gt;
 所以就換成pelican了&lt;/p&gt;
-&lt;p&gt;一開始的確不是很順利 quickstart 跑起來缺東缺西&lt;br /&gt;
-config看完全部manual才搞定&lt;br /&gt;
+&lt;p&gt;一開始的確不是很順利 quickstart 跑起來缺東缺西&lt;br&gt;
+config看完全部manual才搞定&lt;br&gt;
+有空再補一下差異&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;&lt;a href="http://docs.getpelican.com/en/3.6.3/"&gt;pelican&lt;/a&gt;&lt;br&gt;
+就如同蠻多blogger說的 身為一個pythonist當然就要用python做的static site generator&lt;br&gt;
+所以就換成pelican了&lt;/p&gt;
+&lt;p&gt;一開始的確不是很順利 quickstart 跑起來缺東缺西&lt;br&gt;
+config看完全部manual才搞定&lt;br&gt;
 有空再補一下差異&lt;/p&gt;
 
 
-&lt;p&gt;&lt;img alt="" src="/images/gohome.jpg" /&gt;&lt;br /&gt;
-大家可以&lt;del&gt;回家&lt;/del&gt;寫blog了&lt;/p&gt;</summary><category term="python"></category><category term="pelican"></category><category term="markdown"></category><category term="web"></category></entry><entry><title>first post</title><link href="https://ckclark.github.io/blog/2015/11/12/first-post/" rel="alternate"></link><updated>2015-11-12T17:19:57+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.github.io,2015-11-12:blog/2015/11/12/first-post/</id><summary type="html">&lt;h3&gt;開板誌慶&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="" src="/images/gohome.jpg"&gt;&lt;br&gt;
+大家可以&lt;del&gt;回家&lt;/del&gt;寫blog了&lt;/p&gt;</content><category term="python"></category><category term="pelican"></category><category term="markdown"></category><category term="web"></category></entry><entry><title>first post</title><link href="https://ckclark.csie.org/blog/2015/11/12/first-post/" rel="alternate"></link><published>2015-11-12T17:19:57+08:00</published><updated>2015-11-12T17:19:57+08:00</updated><author><name>Clark Chung</name></author><id>tag:ckclark.csie.org,2015-11-12:/blog/2015/11/12/first-post/</id><summary type="html">&lt;h3&gt;開板誌慶&lt;/h3&gt;
 &lt;p&gt;第一篇來個reference  &lt;/p&gt;
-&lt;p&gt;Read on button is: &lt;code&gt;&amp;lt;!-- more --&amp;gt;&lt;/code&gt;&lt;br /&gt;
+&lt;p&gt;Read on button is: &lt;code&gt;&amp;lt;!-- more --&amp;gt;&lt;/code&gt;&lt;br&gt;
 &lt;!-- more --&gt;&lt;/p&gt;
 &lt;h2&gt;markdown&lt;/h2&gt;
-&lt;p&gt;&lt;a href="http://nestacms.com/docs/creating-content/markdown-cheat-sheet"&gt;Reference 1&lt;/a&gt;&lt;br /&gt;
+&lt;p&gt;&lt;a href="http://nestacms.com/docs/creating-content/markdown-cheat-sheet"&gt;Reference 1&lt;/a&gt;&lt;br&gt;
 &lt;a href="https://help.github.com/articles/github-flavored-markdown/"&gt;Reference 2&lt;/a&gt;&lt;/p&gt;
 &lt;h1&gt;section heading 1&lt;/h1&gt;
 &lt;h2&gt;section heading 2&lt;/h2&gt;
 &lt;h3&gt;section heading 3&lt;/h3&gt;
 &lt;h4&gt;section heading 4&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;# section heading 1&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;## section heading 2&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;### section heading 3&lt;/code&gt;&lt;br /&gt;
+&lt;p&gt;&lt;code&gt;# section heading 1&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;## section heading 2&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;### section heading 3&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;#### section heading 4&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;Paragraphs are very easy; separate them with a blank line. You can write your …&lt;/p&gt;</summary><content type="html">&lt;h3&gt;開板誌慶&lt;/h3&gt;
+&lt;p&gt;第一篇來個reference  &lt;/p&gt;
+&lt;p&gt;Read on button is: &lt;code&gt;&amp;lt;!-- more --&amp;gt;&lt;/code&gt;&lt;br&gt;
+&lt;!-- more --&gt;&lt;/p&gt;
+&lt;h2&gt;markdown&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://nestacms.com/docs/creating-content/markdown-cheat-sheet"&gt;Reference 1&lt;/a&gt;&lt;br&gt;
+&lt;a href="https://help.github.com/articles/github-flavored-markdown/"&gt;Reference 2&lt;/a&gt;&lt;/p&gt;
+&lt;h1&gt;section heading 1&lt;/h1&gt;
+&lt;h2&gt;section heading 2&lt;/h2&gt;
+&lt;h3&gt;section heading 3&lt;/h3&gt;
+&lt;h4&gt;section heading 4&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;# section heading 1&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;## section heading 2&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;### section heading 3&lt;/code&gt;&lt;br&gt;
 &lt;code&gt;#### section heading 4&lt;/code&gt;  &lt;/p&gt;
 &lt;p&gt;Paragraphs are very easy; separate them with a blank line. You can write your paragraph on one long line,
 or you can
 wrap the lines yourself
 if you prefer.&lt;/p&gt;
 &lt;p&gt;This section was marked up like so:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;Paragraphs are very easy; separate them with a blank line. You can write your paragraph on one long line,
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Paragraphs are very easy; separate them with a blank line. You can write your paragraph on one long line,
 or you can
 wrap the lines yourself
 if you prefer.
@@ -468,16 +531,16 @@ This section was marked up like so:
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;bold&lt;/strong&gt; and &lt;em&gt;italics&lt;/em&gt;&lt;br /&gt;
+&lt;p&gt;&lt;strong&gt;bold&lt;/strong&gt; and &lt;em&gt;italics&lt;/em&gt;&lt;br&gt;
 &lt;code&gt;**bold** and *italics*&lt;/code&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;underscores&lt;/strong&gt; also &lt;em&gt;do&lt;/em&gt;&lt;br /&gt;
+&lt;p&gt;&lt;strong&gt;underscores&lt;/strong&gt; also &lt;em&gt;do&lt;/em&gt;&lt;br&gt;
 &lt;code&gt;__underscores__ also _do_&lt;/code&gt;  &lt;/p&gt;
-&lt;p&gt;~~stikethrough~~&lt;br /&gt;
+&lt;p&gt;~~stikethrough~~&lt;br&gt;
 &lt;code&gt;~~stikethrough~~&lt;/code&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;a href="http://ckclark.github.io/"&gt;url link&lt;/a&gt;&lt;br /&gt;
-&lt;code&gt;[url link](http://ckclark.github.io/)&lt;/code&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;a href="http://ckclark.github.io/" title="information when hover"&gt;hover me&lt;/a&gt;&lt;br /&gt;
-&lt;code&gt;[hover me](http://ckclark.github.io/ "information when hover")&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://ckclark.csie.org/"&gt;url link&lt;/a&gt;&lt;br&gt;
+&lt;code&gt;[url link](https://ckclark.csie.org/)&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://ckclark.csie.org/" title="information when hover"&gt;hover me&lt;/a&gt;&lt;br&gt;
+&lt;code&gt;[hover me](https://ckclark.csie.org/ "information when hover")&lt;/code&gt;  &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Bullet 1&lt;/li&gt;
 &lt;li&gt;Bullet 2&lt;/li&gt;
@@ -485,7 +548,7 @@ This section was marked up like so:
 &lt;li&gt;Bullet 2b&lt;/li&gt;
 &lt;li&gt;Bullet 3&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;* Bullet 1
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;* Bullet 1
 * Bullet 2
   * Bullet 2a
   * Bullet 2b
@@ -502,7 +565,7 @@ This section was marked up like so:
 &lt;p&gt;不要因為有配著偉人照片，就隨便相信網路上流傳的名言佳句。 
 &lt;cite&gt;胡適&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&amp;gt; 不要因為有配著偉人照片，就隨便相信網路上流傳的名言佳句。 
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt; 不要因為有配著偉人照片，就隨便相信網路上流傳的名言佳句。 
 &amp;gt; &lt;span class="nt"&gt;&amp;lt;cite&amp;gt;&lt;/span&gt;胡適&lt;span class="nt"&gt;&amp;lt;/cite&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -511,47 +574,47 @@ This section was marked up like so:
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th&gt;Left-Aligned&lt;/th&gt;
+&lt;th align="left"&gt;Left-Aligned&lt;/th&gt;
 &lt;th align="center"&gt;Center Aligned&lt;/th&gt;
 &lt;th align="right"&gt;Right Aligned&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;col 3 is&lt;/td&gt;
+&lt;td align="left"&gt;col 3 is&lt;/td&gt;
 &lt;td align="center"&gt;some wordy text&lt;/td&gt;
 &lt;td align="right"&gt;$1600&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;col 2 is&lt;/td&gt;
+&lt;td align="left"&gt;col 2 is&lt;/td&gt;
 &lt;td align="center"&gt;centered&lt;/td&gt;
 &lt;td align="right"&gt;$12&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;zebra stripes&lt;/td&gt;
+&lt;td align="left"&gt;zebra stripes&lt;/td&gt;
 &lt;td align="center"&gt;are neat&lt;/td&gt;
 &lt;td align="right"&gt;$1&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Left&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Aligned&lt;/span&gt;  &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Center&lt;/span&gt; &lt;span class="nv"&gt;Aligned&lt;/span&gt;  &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Right&lt;/span&gt; &lt;span class="nv"&gt;Aligned&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="p"&gt;:-&lt;/span&gt;&lt;span class="s-Atom"&gt;-----------&lt;/span&gt; &lt;span class="p"&gt;|:-&lt;/span&gt;&lt;span class="s-Atom"&gt;--------------:&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s-Atom"&gt;-----:&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;
-&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s-Atom"&gt;col&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="o"&gt;is&lt;/span&gt;      &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s-Atom"&gt;some&lt;/span&gt; &lt;span class="s-Atom"&gt;wordy&lt;/span&gt; &lt;span class="s-Atom"&gt;text&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;1600&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s-Atom"&gt;col&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;is&lt;/span&gt;      &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s-Atom"&gt;centered&lt;/span&gt;        &lt;span class="p"&gt;|&lt;/span&gt;   &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s-Atom"&gt;zebra&lt;/span&gt; &lt;span class="s-Atom"&gt;stripes&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s-Atom"&gt;are&lt;/span&gt; &lt;span class="s-Atom"&gt;neat&lt;/span&gt;        &lt;span class="p"&gt;|&lt;/span&gt;    &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Left&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Aligned&lt;/span&gt;  &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Center&lt;/span&gt; &lt;span class="nv"&gt;Aligned&lt;/span&gt;  &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Right&lt;/span&gt; &lt;span class="nv"&gt;Aligned&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="p"&gt;:-&lt;/span&gt;&lt;span class="s s-Atom"&gt;-----------&lt;/span&gt; &lt;span class="p"&gt;|:-&lt;/span&gt;&lt;span class="s s-Atom"&gt;--------------:&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;-----:&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;col&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="o"&gt;is&lt;/span&gt;      &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;some&lt;/span&gt; &lt;span class="s s-Atom"&gt;wordy&lt;/span&gt; &lt;span class="s s-Atom"&gt;text&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;1600&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;col&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;is&lt;/span&gt;      &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;centered&lt;/span&gt;        &lt;span class="p"&gt;|&lt;/span&gt;   &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;zebra&lt;/span&gt; &lt;span class="s s-Atom"&gt;stripes&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;are&lt;/span&gt; &lt;span class="s s-Atom"&gt;neat&lt;/span&gt;        &lt;span class="p"&gt;|&lt;/span&gt;    &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;rake&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;rake setup_github_pages       &lt;span class="c"&gt;# init github settings&lt;/span&gt;
-&lt;span class="nv"&gt;$ &lt;/span&gt;rake &lt;span class="s1"&gt;&amp;#39;new_post[&amp;quot;title here&amp;quot;]&amp;#39;&lt;/span&gt; &lt;span class="c"&gt;# create a new post&lt;/span&gt;
-&lt;span class="nv"&gt;$ &lt;/span&gt;rake generate                 &lt;span class="c"&gt;# Generates posts and pages into the public directory&lt;/span&gt;
-&lt;span class="nv"&gt;$ &lt;/span&gt;rake watch                    &lt;span class="c"&gt;# Watches source/ and sass/ for changes and regenerates&lt;/span&gt;
-&lt;span class="nv"&gt;$ &lt;/span&gt;rake preview                  &lt;span class="c"&gt;# Watches, and mounts a webserver at http://localhost:4000&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ rake setup_github_pages       &lt;span class="c1"&gt;# init github settings&lt;/span&gt;
+$ rake &lt;span class="s1"&gt;&amp;#39;new_post[&amp;quot;title here&amp;quot;]&amp;#39;&lt;/span&gt; &lt;span class="c1"&gt;# create a new post&lt;/span&gt;
+$ rake generate                 &lt;span class="c1"&gt;# Generates posts and pages into the public directory&lt;/span&gt;
+$ rake watch                    &lt;span class="c1"&gt;# Watches source/ and sass/ for changes and regenerates&lt;/span&gt;
+$ rake preview                  &lt;span class="c1"&gt;# Watches, and mounts a webserver at http://localhost:4000&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;After checkout your workspace of octopress (as a git repository). You should set up like following:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;rake setup_github_pages                               &lt;span class="c"&gt;# and set the git url&lt;/span&gt;
-&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;_deploy &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; git pull -f origin master:master        &lt;span class="c"&gt;# forcesync the latest files&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="octopress"></category><category term="markdown"></category><category term="web"></category></entry></feed>
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ rake setup_github_pages                               &lt;span class="c1"&gt;# and set the git url&lt;/span&gt;
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; _deploy &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; git pull -f origin master:master        &lt;span class="c1"&gt;# forcesync the latest files&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="octopress"></category><category term="markdown"></category><category term="web"></category></entry></feed>
